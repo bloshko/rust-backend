@@ -1,0 +1,21 @@
+[package]
+name = "rust-backend"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "rust-backend"
+
+[dependencies]
+actix-web = "4"
+reqwest = "0.12.5"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+
+[target.x86_64-apple-darwin]
+rustflags = ["-C", "link-arg=-fuse-ld=lld"]
+[target.aarch64-apple-darwin]
+rustflags = ["-C", "link-arg=-fuse-ld=/opt/homebrew/opt/llvm/bin/ld64.lld"]
